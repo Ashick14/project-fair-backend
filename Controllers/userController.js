@@ -32,9 +32,9 @@ exports.register=async(req,res)=>{
 exports.login=async(req,res)=>{
     console.log("Inside login fuction");
     try{
-        const {username,email,password}=req.body
+        const {email,password}=req.body
         console.log(email,password);
-        const User=await users.findOne({email},{password})
+        const User=await users.findOne({email,password})
         if(User){
             
             const token= jwt.sign({userId:User._id},"superkey2024")
